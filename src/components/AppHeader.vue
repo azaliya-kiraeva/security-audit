@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="container header__container">
-      <router-link :to="'/'">
+      <router-link :to="'/security-audit'">
         <span class="header__title"
           >Бланк <strong>ПАБ</strong></span
         ></router-link
