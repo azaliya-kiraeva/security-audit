@@ -220,7 +220,7 @@ const submitForm = () => {
     localStorage.setItem("compliteForm", JSONForm);
   }
 
-  router.push("/complited-from");
+  router.push("/security-audit/complited-from");
 };
 </script>
 
