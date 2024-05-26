@@ -42,15 +42,34 @@
             :key="data.title"
             :title="data.title"
           >
-            <el-form-item>
-              <el-checkbox-group v-model="formResult.result[index].value">
-                <el-checkbox
-                  v-for="radio of data.radios"
-                  :key="radio"
-                  :label="radio"
-                />
-              </el-checkbox-group>
-            </el-form-item>
+            <template v-if="index == 1">
+              <el-form-item>
+                <template v-for="radio of data.radios" :key="radio">
+                  <template
+                    v-if="radio === 'Движущиеся предметы/транспортные средства'"
+                  >
+                    <h4 class="form__collapse-title">
+                      Не защищает себя от опасностей:
+                    </h4>
+                  </template>
+                  <el-checkbox
+                    :label="radio"
+                    v-model="formResult.result[index].value"
+                  />
+                </template>
+              </el-form-item>
+            </template>
+            <template v-else>
+              <el-form-item>
+                <el-checkbox-group v-model="formResult.result[index].value">
+                  <el-checkbox
+                    v-for="radio of data.radios"
+                    :key="radio"
+                    :label="radio"
+                  />
+                </el-checkbox-group>
+              </el-form-item>
+            </template>
           </el-collapse-item>
         </el-collapse>
         <el-form-item label="Прочее:">
@@ -246,5 +265,17 @@ const submitForm = () => {
 
 .form__container {
   padding: 20px;
+}
+
+.form__collapse-title {
+  margin-left: 20px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.el-form-item__content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
 }
 </style>
